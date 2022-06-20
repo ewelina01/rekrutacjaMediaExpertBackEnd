@@ -35,7 +35,7 @@ class Computer2{
 						
 					} else $_SESSION['error_s'] = 'Nie udało się zmienić statusu';
 					
-					if($rezultat = $pol->query("INSERT INTO history (number, status) VALUES ('$this->number','$this->status')"))
+					if($rezultat = $pol->query("INSERT INTO history (number, statusH) VALUES ('$this->number','$this->status')"))
 					{
 						
 					} else $_SESSION['error_s'] = 'Nie udało się zmienić statusu';

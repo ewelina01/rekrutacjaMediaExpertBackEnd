@@ -35,7 +35,7 @@ class Computer{
 						
 					} else $_SESSION['error'] = 'Niepoprawne dane';
 					
-					if($rezultat = $pol->query("INSERT INTO history (number, status) VALUES ('$this->number','$this->status')"))
+					if($rezultat = $pol->query("INSERT INTO history (number, statusH) VALUES ('$this->number','$this->status')"))
 					{
 						
 					} else $_SESSION['error'] = 'Niepoprawne dane';
