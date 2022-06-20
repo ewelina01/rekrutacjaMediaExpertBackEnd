@@ -135,7 +135,8 @@ if(isset($_POST['number']) && isset($_POST['status'])){
 	<div class="nav">
 	
 		<a class="link" href="index.php">Przejdź do listy komputerów</a>
-		<a class="link" href="search.php">Przejdź do wyszukiwarki</a>
+		<a class="link" href="search.php">Przeszukaj dane aktualne</a>
+		<a class="link" href="searchHistory.php">Przeszukaj dane historyczne</a>
 	</div>
 
 

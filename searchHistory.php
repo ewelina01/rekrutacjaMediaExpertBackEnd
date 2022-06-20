@@ -43,14 +43,14 @@ class searchObjects{
 			
 			
 			
-			$zapytanie = "SELECT DISTINCT o.number, o.dateCreated, o.status FROM object as o, history as h WHERE o.number=h.number";
+			$zapytanie = "SELECT o.number, h.dateModified, h.statusH FROM object as o, history as h WHERE o.number=h.number";
 			
 			if($this->number!='') $zapytanie .= " AND o.number='$this->number' ";
-			if($this->status!='') $zapytanie .= " AND o.status='$this->status' ";
-			if($this->dateFrom!='') $zapytanie .= " AND o.dateCreated >= '$this->dateFrom 00:00' ";
-			if($this->dateTo!='') $zapytanie .= " AND o.dateCreated <= '$this->dateTo 23:59' ";
+			if($this->status!='') $zapytanie .= " AND h.statusH='$this->status' ";
+			if($this->dateFrom!='') $zapytanie .= " AND h.dateModified >= '$this->dateFrom 00:00' ";
+			if($this->dateTo!='') $zapytanie .= " AND h.dateModified <= '$this->dateTo 23:59' ";
 			
-			
+		
 			
 			$host = "localhost";
 			$db_user = "root";
@@ -73,14 +73,14 @@ class searchObjects{
 						if($ilerekordow>0)
 						{
 							$content =  '<table>';
-							$content .= '<thead> <td>Numer komputera</td> <td>Data utworzenia</td> <td>Status</td></thead>';
+							$content .= '<thead> <td>Numer komputera</td> <td>Data modyfikacji statusu</td> <td>Status</td></thead>';
 							$content .= '<tbody>';
 							
 							while($row=$rezultat->fetch_assoc())
 							{
 								$number = $row['number'];
-								$dateCreated = $row['dateCreated'];
-								$status = $row['status'];
+								$dateCreated = $row['dateModified'];
+								$status = $row['statusH'];
 								if($status == 1) $option1 = 'selected';
 								if($status == 2) $option2 = 'selected';
 								if($status == 3) $option1 = 'selected';
@@ -143,7 +143,7 @@ class searchObjects{
 			
 	<div class="container">
 	
-	<h2>Wyszukiwarka danych aktualnych</h2>
+	<h2>Wyszukiwarka danych historycznych</h2>
 	
 	<form method="get">
 		<div class="grid">
@@ -151,8 +151,9 @@ class searchObjects{
 				<h3>Numer komputera</h3>
 				<input type="number" name="number" value="<?php if(isset($_GET['number'])) echo $_GET['number']; ?>"/>
 			</div>
+			
 			<div class="grid-row">
-				<h3>Status aktualny</h3>
+				<h3>Status historyczny</h3>
 				<select name="status">
 					<option value="0">wszystkie</option>
 					<option value="1" <?php if(isset($_GET['status']) && $_GET['status']==1) echo 'selected'; ?>>włączony</option>
@@ -161,13 +162,12 @@ class searchObjects{
 					<option value="4" <?php if(isset($_GET['status']) && $_GET['status']==4) echo 'selected'; ?>>uśpienie</option>
 				</select>
 			</div>
-			
 			<div class="grid-row">
-				<h3>Data od</h3>
+				<h3>Data modyfikacji od</h3>
 				<input type="date" name="dateFrom"  value="<?php if(isset($_GET['dateFrom'])) echo $_GET['dateFrom']; ?>"/>
 			</div>
 			<div class="grid-row">
-				<h3>Data do</h3>
+				<h3>Data modyfikacji do</h3>
 				<input type="date" name="dateTo"  value="<?php if(isset($_GET['dateTo'])) echo $_GET['dateTo']; ?>"/>
 			</div>
 			
@@ -179,7 +179,8 @@ class searchObjects{
 		</div>
 	</form>
 	
-
+	
+	
 	<?php 
 		$search = new searchObjects();
 		
@@ -193,7 +194,7 @@ class searchObjects{
 	<div class="nav">
 		<a class="link" href="addComputer.php">Dodaj komputer</a>
 		<a class="link" href="index.php">Przejdź do listy komputerów</a>
-		<a class="link" href="searchHistory.php">Przeszukaj dane historyczne</a>
+		<a class="link" href="search.php">Przeszukaj dane aktualne</a>
 	</div>
 
 

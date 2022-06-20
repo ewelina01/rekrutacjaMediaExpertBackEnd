@@ -81,7 +81,7 @@ class showObjects{
 						return $content;
 						
 					} else {
-						$article_non_exist = true;
+						return 'Brak wyników';
 					}
 					$rezultat->free_result();
 					
@@ -131,7 +131,8 @@ class showObjects{
 	
 	<div class="nav">
 		<a class="link" href="addComputer.php">Dodaj komputer</a>
-		<a class="link" href="search.php">Przejdź do wyszukiwarki</a>
+		<a class="link" href="search.php">Przeszukaj dane aktualne</a>
+		<a class="link" href="searchHistory.php">Przeszukaj dane historyczne</a>
 	</div>
 
 
