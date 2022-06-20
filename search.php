@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-class showObjects{
+class searchObjects{
 	
 	private $status = '';
 	
@@ -120,18 +120,28 @@ class showObjects{
 			
 	<div class="container">
 	
-	<h2>Wszystkie komputery w pracowni</h2>
+	<h2>Rozpocznij wyszukiwanie</h2>
 	
+	<div class="grid">
+		<div class="grid-row">
+			<h3>Numer komputera</h3>
+			<h3>Status</h3>
+			<h3>Data powstania</h3>
+		</div>
+		<div class="grid-row">
+			<div class=""></div>
+		</div>
+	</div>
 	<div class="error"><?php if(isset($_SESSION['error_s'])) echo $_SESSION['error_s']; unset($_SESSION['error_s']); ?></div>
 	
-	<?php echo showObjects::show(); ?>
+	<?php echo searchObjects::show(); ?>
 	
 		
 	</div>
 	
 	<div class="nav">
 		<a class="link" href="addComputer.php">Dodaj komputer</a>
-		<a class="link" href="search.php">Przejdź do wyszukiwarki</a>
+		<a class="link" href="index.php">Przejdź do listy komputerów</a>
 	</div>
 
 
