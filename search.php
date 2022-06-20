@@ -51,11 +51,8 @@ class searchObjects{
 			if($this->dateTo!='') $zapytanie .= " AND o.dateCreated <= '$this->dateTo 23:59' ";
 			
 			
-			
-			$host = "localhost";
-			$db_user = "root";
-			$db_password = "";
-			$db_name = "rekrutacjamediaexpert";
+			require_once "connect.php";
+		
 			mysqli_report(MYSQLI_REPORT_STRICT);
 			
 			try {

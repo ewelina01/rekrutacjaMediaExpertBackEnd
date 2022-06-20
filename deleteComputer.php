@@ -10,13 +10,8 @@ class Computer1{
 		if(ctype_digit($number)) $this->number = $number;
 		
 		if( $this->number!=''){
-			//require_once "connect.php";
-			
-			$host = "localhost";
-			$db_user = "root";
-			$db_password = "";
-			$db_name = "rekrutacjamediaexpert";
-			
+			require_once "connect.php";
+
 			mysqli_report(MYSQLI_REPORT_STRICT);
 			
 			try {

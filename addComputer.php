@@ -12,13 +12,8 @@ class Computer{
 		if(ctype_digit($status)) $this->status = $status;
 		
 		if( $this->number!='' &&  $this->status!=''){
-			//require_once "connect.php";
-			
-			$host = "localhost";
-			$db_user = "root";
-			$db_password = "";
-			$db_name = "rekrutacjamediaexpert";
-			
+			require_once "connect.php";
+	
 			mysqli_report(MYSQLI_REPORT_STRICT);
 			
 			try {
